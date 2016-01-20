@@ -15,6 +15,6 @@ app.get('/', function(req, res) {
 
 })
 
-videos.search();
+videos.staffpick();
 
 
