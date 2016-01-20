@@ -11,7 +11,7 @@ require('dotenv').load();
 
 //vimeo API 
 var Vimeo = require('vimeo').Vimeo; 
-var lib = new Vimeo("d8261f33a12c9c8f8527c9039d6c80dd6b48d66e", "O1iW2pYeFFuaAkY6Fx3hPLFEE+P9njgCCXt56ON6hcS/131e0+nDcdA1dh2LkRS3nAhP61hm7LbdYvRFXuipolW2bmPwg6QYepZYndYsZu9Yalmos5XhlrWt7mtkypn0", "5bf9b36d0c1cc469d2297e682f94acce");
+var lib = new Vimeo("");
 
   lib.request(/*options*/{
         // This is the path for the videos contained within the staff picks channels
