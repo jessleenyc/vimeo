@@ -1,0 +1,26 @@
+{
+  "name": "vimeo",
+  "version": "1.0.0",
+  "description": "The vimeo project allows users to pick the duration of time they can set aside towards watching well-curated videos. After the user selects their amount of time, they are able to choose different categories of interest or pick 'random' for a series of videos curated to the amount of time they have allotted.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessleenyc/vimeo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessleenyc/vimeo/issues"
+  },
+  "homepage": "https://github.com/jessleenyc/vimeo#readme",
+  "dependencies": {
+    "body-parser": "^1.14.2",
+    "dotenv": "^1.2.0",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "vimeo": "^1.1.4"
+  }
+}
