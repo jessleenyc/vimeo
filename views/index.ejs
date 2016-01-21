@@ -13,11 +13,13 @@
 
   <div ng-controller="DocumentaryController as docs">
     <ul ng-repeat="doc in docs.all"> 
-      <li> {{doc.embed}}</li> </ul>
+      <li ng-bind-html="doc.embed"></li>
+    </ul>
 
   <form method="post" action="/documentaries">
     <button>documentaries</button>
   </form>
+
 
 </body>
 </html>

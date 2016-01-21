@@ -1,1 +1,3 @@
-angular.module('VimeoApp', []);
+angular.module('VimeoApp', []).config(function($sceProvider) {
+   $sceProvider.enabled(false);
+ });

@@ -53,11 +53,12 @@ app.post('/documentaries', function(req, res) {
         console.log(error);
       } else {
           var videos = body.data;
+          console.log(body.data);
           var documentaryList = [];
           videos.forEach(function(video) {
             var newVideo = {
               name: video.name,
-              link: video.uri,
+              link: video.uri.slice(8, video.uri.length),
               embed: video.embed.html,
               duration: video.duration,
               privacyEmbed: video.privacy.embed,

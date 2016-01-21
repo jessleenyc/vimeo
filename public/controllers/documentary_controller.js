@@ -10,12 +10,9 @@ function DocumentaryController($http) {
   docs.fetch = function() {
     $http 
       .get('/documentaries') 
-      .then(funct ion(response) {
+      .then(function(response) {
         docs.all = response.data
-        console.log(docs.all[0].embed.html());
       })
-
-
   }
   docs.fetch();
 }
