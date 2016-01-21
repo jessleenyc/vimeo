@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="VimeoApp">
+<head>
+  <title></title>
+  <script src="/jquery/dist/jquery.js"></script>
+  <script src="/angular/angular.js"></script>
+  <script src="/controllers/angular_app.js"></script>
+  <script src="/controllers/documentary_controller.js"></script>
+</head>
+<body>
+
+  <h1> testing </h1>
+
+  <div ng-controller="DocumentaryController as docs">
+    <ul ng-repeat="doc in docs.all"> 
+      <li> {{doc.embed}}</li> </ul>
+
+  <form method="post" action="/documentaries">
+    <button>documentaries</button>
+  </form>
+
+</body>
+</html>

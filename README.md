@@ -11,3 +11,8 @@ Can be found on [Trello](https://trello.com/b/cQGcppNV/vimeo)
 #Wireframes
 ![Wireframes](https://github.com/jessleenyc/vimeo/blob/master/vimeo%20wireframes.png?raw=true)
 
+#Notes
+
+##Categories
+Documentary, Experimental, Narrative, Comedy, Music, Animation, Sports, Travel, Random
+

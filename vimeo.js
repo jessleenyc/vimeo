@@ -1,6 +1,5 @@
 //vimeo API 
 require('dotenv').load();
-
 var Vimeo = require('vimeo').Vimeo; 
 var lib = new Vimeo(process.env.VIMEO_IDENTIFIER, process.env.VIMEO_SECRET, process.env.VIMEO_TOKEN);
 
@@ -21,25 +20,71 @@ videos.staffpick = function() {
         if (error) {
             console.log(error);
         } else {
-            console.log(body.data[0].tags);
+          var videos = body.data
+            var staffList = [];
+            videos.forEach(function(video) {
+                var newVideo = {
+                    name: video.name,
+                    link: video.uri,
+                    embed: video.embed.html,
+                    duration: video.duration,
+                    privacyEmbed: video.privacy.embed,
+                    privacyView: video.privacy.view,
+                    plays: video.stats.plays,
+                    modified: video.modified_time,
+                    created: video.created_time
+                }
+                staffList.push(newVideo)
+            })
         }
     })
 };
 
-videos.category = function() {
+videos.documentary = function() {
     lib.request({
         path: '/categories/documentary/videos',
         query: {
             page: 1,
-            per_page: 5
+            per_page: 20,
+            sort: 'plays',
         }
     }, function(error, body, status_code, headers) {
             if (error) {
                 console.log(error);
             } else {
-                console.log(body.data[0]);
+                var videos = body.data
+                var documentaryList = [];
+                videos.forEach(function(video) {
+                    var newVideo = {
+                        name: video.name,
+                        link: video.uri,
+                        embed: video.embed.html,
+                        duration: video.duration,
+                        privacyEmbed: video.privacy.embed,
+                        privacyView: video.privacy.view,
+                        plays: video.stats.plays,
+                        modified: video.modified_time,
+                        created: video.created_time
+
+                    }
+                    documentaryList.push(newVideo)
+                })
+
+                documentaryList.forEach(function(video) {
+                    if (video.plays > 10000) {
+                        console.log(video);
+                    } else {          
+                        console.log('no videos over 10000 plays');
+                        console.log(video.date);
+                        console.log('plays' + video.plays);                     }
+                })
+                // console.log(documentaryList[Math.floor(Math.random() * documentaryList.length)]);
             }
     })
 }
-videos.category();
+videos.staffpick();
+
+
+
+
 module.exports = videos;
