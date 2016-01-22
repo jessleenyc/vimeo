@@ -24,10 +24,10 @@ app.get('/', function(req, res) {
 });
 
 app.post('/category', function(req, res) {
-  console.log(req.query);
+  console.log(req.query.cat);
   var call = function(){
     lib.request({
-    path: '/categories/documentary/videos',
+    path: '/categories/'+ req.query.cat+'/videos',
     query: {
         page: Math.random()+ 1 * 5,
         per_page: 50,
@@ -35,7 +35,7 @@ app.post('/category', function(req, res) {
     }
   },function(error, body, status_code, headers) {
       if (error) {
-        console.log(error);
+        console.log('error' + error);
       } else {
         res.json(body.data);
       }
@@ -45,7 +45,6 @@ app.post('/category', function(req, res) {
 call();
 
 })
-
 
 app.listen(process.env.PORT || 3000);
 

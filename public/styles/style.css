@@ -2,3 +2,7 @@ iframe {
   max-width: 1080px;
 }
 
+.playlist {
+  display: none;
+}
+

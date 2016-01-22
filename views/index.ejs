@@ -14,19 +14,23 @@
   <h1> Vimeo Responsibly </h1>
 
   <div ng-controller="CategoryController as videos">
-    <form method="post" action="/documentaries">
-<!--           <button>documentaries</button> -->
-      <select ng-change="videos.logit(category)" ng-model="category" name="test" id="time">
-        <option value="documentaries">documentaries</option>
+    <form>
+<!--       <select ng-change="videos.logit(category)" ng-model="category" name="test" id="time"> -->
+      <select id="time">
+        <option value="documentary">documentaries</option>
         <option value="animation">animation</option>
       </select>
-      <input type="submit">
+
+      <input type="text" ng-model="dogs.new">
+
+      <button id="submit">submit</button>
     </form>
 
-    <div ng-repeat="video in videos.newList"> 
+    <div id="playlist" ng-repeat="video in videos.newList"> 
       {{video.name}}
-      <div class="player" ng-bind-html="video.embed.html"></div>  
-    </div>
+<!--       <div class="player" ng-bind-html="video.embed.html"></div>  --> 
+    </div> <!-- #playlist -->
   </div>
+
 </body>
 </html>

@@ -10,7 +10,9 @@ function CategoryController($http) {
 
   videos.fetch = function(cb, num) {
     // display loader
-    var category = $('#cat-select').val()
+
+    var category = $('#time').val()
+    console.log(category);
     $http 
     .post('/category?cat='+category)
 
@@ -48,12 +50,13 @@ function CategoryController($http) {
       }
     }
   }
+  $('#submit').on('click', function() {
 
 
-  videos.logit = function(category) {
-    console.log(category);
-  }
+    videos.fetch(playlist, 1800);
+    $('.playlist').toggle();
 
-  videos.fetch(playlist, 1800);
+  });
+  
 }
 
