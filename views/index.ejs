@@ -2,6 +2,7 @@
 <html ng-app="VimeoApp">
 <head>
   <title></title>
+  <link rel="stylesheet" href="/styles/style.css">
   <script src="/jquery/dist/jquery.js"></script>
   <script src="/angular/angular.js"></script>
   <script src="/controllers/angular_app.js"></script>
@@ -12,9 +13,13 @@
   <h1> testing </h1>
 
   <div ng-controller="DocumentaryController as docs">
-    <ul ng-repeat="doc in docs.all"> 
-      <li ng-bind-html="doc.embed"></li>
-    </ul>
+    <div ng-repeat="doc in docs.all"> 
+      {{doc.name}}
+      {{doc.duration}}
+      {{doc.plays}}
+<!--     uses the direct embed link w/ $sceProvider-->
+<!--       <div class="player" ng-bind-html="doc.embed"></div> -->
+    </div>
 
   <form method="post" action="/documentaries">
     <button>documentaries</button>

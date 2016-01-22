@@ -44,8 +44,8 @@ app.post('/documentaries', function(req, res) {
     lib.request({
     path: '/categories/documentary/videos',
     query: {
-        page: 1,
-        per_page: 20,
+        page: 2,
+        per_page: 50,
         sort: 'plays',
     }
   },function(error, body, status_code, headers) {
@@ -58,7 +58,7 @@ app.post('/documentaries', function(req, res) {
           videos.forEach(function(video) {
             var newVideo = {
               name: video.name,
-              link: video.uri.slice(8, video.uri.length),
+              video_id: video.uri.slice(8, video.uri.length),
               embed: video.embed.html,
               duration: video.duration,
               privacyEmbed: video.privacy.embed,
@@ -72,13 +72,15 @@ app.post('/documentaries', function(req, res) {
           db.collection('docs').insert(documentaryList, function (err, result) {
             if (err) {
               console.log(err)
-            } 
+            } else {
+              res.redirect('/');
+            }
           });
       }
   });
   })
 
-  res.redirect('/');
+  
 
 
 });
