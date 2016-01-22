@@ -11,16 +11,6 @@ app.use(express.static(__dirname + '/public'));
 app.use(express.static(__dirname + '/bower_components'));
 app.set('view engine', 'ejs');
 
-//set up db
-var db;
-var MongoClient = require('mongodb').MongoClient;
-var ObjectId = require('mongodb').ObjectId;
-var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/vimeoDB';
-MongoClient.connect(mongoUrl, function(err, database) {
-  if (err) { throw err; }
-  db = database;
-  process.on('exit', db.close);
-});
 
 //Vimeo API 
 require('dotenv').load();
@@ -33,18 +23,13 @@ app.get('/', function(req, res) {
   res.render('index');
 });
 
-app.post('/documentaries', function(req, res) {
-  
-  function dropDocs(cb) {
-    db.collection('docs').drop();
-    cb();
-  }
-
-  dropDocs(function(){
+app.post('/category', function(req, res) {
+  console.log(req.query);
+  var call = function(){
     lib.request({
     path: '/categories/documentary/videos',
     query: {
-        page: 2,
+        page: Math.random()+ 1 * 5,
         per_page: 50,
         sort: 'plays',
     }
@@ -52,44 +37,15 @@ app.post('/documentaries', function(req, res) {
       if (error) {
         console.log(error);
       } else {
-          var videos = body.data;
-          console.log(body.data);
-          var documentaryList = [];
-          videos.forEach(function(video) {
-            var newVideo = {
-              name: video.name,
-              video_id: video.uri.slice(8, video.uri.length),
-              embed: video.embed.html,
-              duration: video.duration,
-              privacyEmbed: video.privacy.embed,
-              privacyView: video.privacy.view,
-              plays: video.stats.plays,
-              modified: video.modified_time,
-              created: video.created_time
-            };
-            documentaryList.push(newVideo);
-          });
-          db.collection('docs').insert(documentaryList, function (err, result) {
-            if (err) {
-              console.log(err)
-            } else {
-              res.redirect('/');
-            }
-          });
+        res.json(body.data);
       }
-  });
   })
+}
 
-  
+call();
 
-
-});
-
-app.get('/documentaries', function(req, res) {
-  db.collection('docs').find({}).toArray(function(err, result) {
-    res.json(result);
-  })
 })
+
 
 app.listen(process.env.PORT || 3000);
 
