@@ -27,9 +27,9 @@ app.post('/category', function(req, res) {
   console.log(req.query.cat);
   var call = function(){
     lib.request({
-    path: '/categories/'+ req.query.cat+'/videos',
+    path: req.query.cat,
     query: {
-        page: Math.random()+ 1 * 5,
+        page: (Math.random() * 4) + 1,
         per_page: 50,
         sort: 'plays',
     }

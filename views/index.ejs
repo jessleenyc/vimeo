@@ -14,15 +14,20 @@
   <h1> Vimeo Responsibly </h1>
 
   <div ng-controller="CategoryController as videos">
+
     <form>
-<!--       <select ng-change="videos.logit(category)" ng-model="category" name="test" id="time"> -->
-      <select id="time">
-        <option value="documentary">documentaries</option>
-        <option value="animation">animation</option>
+      <select id="cat">
+        <option value="/channels/staffpicks/videos">Random</option>
+        <option value="/categories/documentary/videos">documentary</option>
+        <option value="/categories/animation/videos">animation</option>
+        <option value="/experimental/videos">experimental</option>
+        <option value="music">music</option>
+        <option value="/categories/narrative/videos">narrative</option>
+        <option value="/categories/travel/videos">travel</option>
+        <option value="/categories/comedy/videos">comedy</option>
+        <option value="/categories/personal/videos">personal</option>
       </select>
-
-      <input type="text" ng-model="dogs.new">
-
+      <input id="time" type="text">  
       <button id="submit">submit</button>
     </form>
 

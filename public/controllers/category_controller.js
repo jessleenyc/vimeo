@@ -4,15 +4,16 @@ CategoryController.$inject = ['$http'];
 
 
 function CategoryController($http) {
+
   var videos = this;
   videos.all = [];
   videos.newList; 
+  
 
   videos.fetch = function(cb, num) {
-    // display loader
+    // display lader
 
-    var category = $('#time').val()
-    console.log(category);
+    var category = $('#cat').val()
     $http 
     .post('/category?cat='+category)
 
@@ -51,9 +52,8 @@ function CategoryController($http) {
     }
   }
   $('#submit').on('click', function() {
-
-
-    videos.fetch(playlist, 1800);
+    var time = $('#time').val()
+    videos.fetch(playlist, time);
     $('.playlist').toggle();
 
   });
