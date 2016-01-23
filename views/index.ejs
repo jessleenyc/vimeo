@@ -2,7 +2,10 @@
 <html ng-app="VimeoApp">
 <head>
   <title>Vimeo Responsibly</title>
-  <link rel="stylesheet" href="/semantic/dist/semantic.css">
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/normalize.css">
+  <link rel="stylesheet" href="/styles/skeleton.css">
+  <link rel="stylesheet" href="/styles/loader.css">
   <link rel="stylesheet" href="/styles/style.css">
   <script src="/jquery/dist/jquery.js"></script>
   <script src="/angular/angular.js"></script>
@@ -11,29 +14,65 @@
 </head>
 <body>
 
-  <h1> Vimeo Responsibly </h1>
+<header>
+  <img src="/images/VO.png">
+  <h1> How much time do you have?</h1> 
+  <h3> We'll find the videos you want to watch. </h3>
+</header>
 
-  <div ng-controller="CategoryController as videos">
+ <div class="container" ng-controller="CategoryController as videos">
+  <h5> PICK A CATEGORY </h5>
+  <form id="cat">
+    <div class="row">
+      <label class="button" for="music">music</label>
+      <input id="music" type="radio" name="category" value="/categories/music/videos">
 
-    <form>
-      <select id="cat">
-        <option value="/channels/staffpicks/videos">Random</option>
-        <option value="/categories/documentary/videos">documentary</option>
-        <option value="/categories/animation/videos">animation</option>
-        <option value="/experimental/videos">experimental</option>
-        <option value="music">music</option>
-        <option value="/categories/narrative/videos">narrative</option>
-        <option value="/categories/travel/videos">travel</option>
-        <option value="/categories/comedy/videos">comedy</option>
-        <option value="/categories/personal/videos">personal</option>
-      </select>
-      <input id="time" type="text">  
-      <button id="submit">submit</button>
-    </form>
+      <label class="button" for="documentary">documentary</label>
+      <input id="documentary"type="radio" name="category" value="/categories/documentary/videos">
+
+      <label class="button"for="animation">animation</label>
+      <input id="animation" type="radio" name="category" value="/categories/animation/videos">
+    </div>
+
+    <div class="row">
+      <label class="button" for="experimental">experimental</label>
+      <input id="experimental" type="radio" name="category" value="/categories/experimental/videos">
+
+      <label class="button" for="random">Random</label>
+      <input id="random" type="radio" name="category" value="/channels/staffpicks/videos">
+
+      <label class="button" for="narrative">narrative</label>
+      <input id="narrative" type="radio" name="category" value="/categories/narrative/videos">
+    </div>
+
+    <div class="row">
+      <label class="button" for="travel">travel</label>
+      <input id="travel" type="radio" name="category" value="/categories/travel/videos">
+
+      <label class="button" for="comedy">comedy</label>
+      <input id="comedy" type="radio" name="category" value="/categories/comedy/videos">
+
+      <label class="button" for="personal">personal</label>
+      <input id="personal" type="radio" name="category" value="/categories/personal/videos">
+    </div>
+
+    <div class="row">
+      <h5>PICK A TIME</h5>
+
+      <label for="five-min">5:00</label>  
+      <input id="five-min" name="time" type="radio">  
+      <label for="ten-min">10:00</label>
+      <input id="ten-min" name="time" type="radio">
+    <button id="submit">submit</button>
+    </div>
+  </form>
+
+    <div id="loader" class="loader">
+    </div>
 
     <div id="playlist" ng-repeat="video in videos.newList"> 
       {{video.name}}
-<!--       <div class="player" ng-bind-html="video.embed.html"></div>  --> 
+      <div class="player" ng-bind-html="video.embed.html"></div>
     </div> <!-- #playlist -->
   </div>
 

@@ -38,6 +38,7 @@ app.post('/category', function(req, res) {
         console.log('error' + error);
       } else {
         res.json(body.data);
+        console.log(headers);
       }
   })
 }

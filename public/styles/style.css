@@ -1,8 +1,41 @@
+body {
+  padding: 10px;
+}
+header {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  border-bottom: black dotted 1px;
+}
+
+img {
+  max-height: 100px;
+}
+
 iframe {
   max-width: 1080px;
 }
 
 .playlist {
   display: none;
+}
+
+input[type=radio] {
+   position: absolute;
+   top: -9999px;
+   left: -9999px;
+}
+
+#loader {
+  display: none;
+}
+
+form {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+  padding-top: 10px;
 }
 

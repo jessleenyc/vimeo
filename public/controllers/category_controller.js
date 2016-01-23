@@ -2,7 +2,6 @@ angular.module('VimeoApp').controller('CategoryController', CategoryController);
 
 CategoryController.$inject = ['$http'];
 
-
 function CategoryController($http) {
 
   var videos = this;
@@ -12,8 +11,10 @@ function CategoryController($http) {
 
   videos.fetch = function(cb, num) {
     // display lader
+    $('#loader').toggle();
+    var category = $("#cat input[type='radio']:checked").val();
 
-    var category = $('#cat').val()
+
     $http 
     .post('/category?cat='+category)
 
@@ -23,9 +24,9 @@ function CategoryController($http) {
         cb(num);
       }) 
   }
-  
-  var playlist = function(num) {
 
+  var playlist = function(num) {
+    $('#loader').toggle();
     var selection = videos.all;
     var withinTimeFrame = [];
 
@@ -37,7 +38,6 @@ function CategoryController($http) {
     });
 
     var random = withinTimeFrame[Math.floor(Math.random() * withinTimeFrame.length)];
-
     //first video for selection
     videos.newList = [random];
     
@@ -54,7 +54,7 @@ function CategoryController($http) {
   $('#submit').on('click', function() {
     var time = $('#time').val()
     videos.fetch(playlist, time);
-    $('.playlist').toggle();
+    $('#playlist').toggle();
 
   });
   
