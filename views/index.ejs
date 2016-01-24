@@ -12,6 +12,8 @@
   <script src="/angular/angular.js"></script>
   <script src="/controllers/angular_app.js"></script>
   <script src="/controllers/category_controller.js"></script>
+  <script src="/controllers/register_controller.js"></script>
+  <script src="/controllers/login_controller.js"></script>
 </head>
 <body>
 
@@ -19,7 +21,6 @@
   <img src="/images/VO.png">
   <h3> Curated videos for busy people, like you.</h3>
 </header>
-
   <div ng-controller="CategoryController as videos">
     <div class="container">
       <form id="cat">
@@ -66,7 +67,7 @@
               <br>
               <h5> HOW MUCH TIME CAN YOU SPARE? <br><br>
                 <i ng-click="videos.add()" id="plus" class="fa fa-plus-circle"></i><br>
-                <input ng-model="videos.minutes" type="text" readonly><br>
+                <input id="min-input" ng-model="videos.minutes" type="text" readonly><br>
                 <i ng-click="videos.minus()" id="minus"class="fa fa-minus-circle"></i><br> 
               <h5> We're going to find {{videos.minutes}} minutes worth of {{videos.cat}} videos for you. </h5>  
               <button ng-click="videos.fetch(videos.playlist, videos.time)"id="submit">YES, PLEASE!</button>
@@ -89,14 +90,38 @@
     </div> <!-- CategoryController -->
   </div> <!-- #load-container -->
 
-  <div id="register-container" class="container">
+  <div ng-controller="RegisterController as register" id="register-container" class="container">
     <h3> CREATE AN ACCOUNT </h3>
     <ul> 
       <li> saved history of videos you've watched </li>
       <li> guarantee no-repeats! </li>
     </ul>
 
-    
+    <form name="registerForm" class="register-form" validate>
+      <label> Name </label>
+      <input type="text" name="userName" ng-model="register.name" required>
+
+      <label> Email </label>
+      <input type="email" name="userEmail" ng-model="register.email" required>
+
+      <label> Password </label>
+      <input type="password" name="userPassword" ng-model="register.password" required minLength="8">
+
+      <button ng-click="register.account()"> Register</button>
+    </form>
+  </div> <!-- RegisterController -->
+
+  <div ng-controller="LoginController as login">
+  <form name="loginForm" class="login-form" validate>
+    <label>Email</label>
+    <input type="email" name="loginEmail" ng-model="login.email" required>
+
+    <label>Password</label>
+    <input type="password" name="loginPassword" ng-model="login.password" required>
+
+    <button ng-click="login.session()">Login</button>
+    <button ng-click="login.end()">log out </button>
+  </form>
   </div>
 
 </body>
