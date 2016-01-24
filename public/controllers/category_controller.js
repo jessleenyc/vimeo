@@ -8,21 +8,40 @@ function CategoryController($http) {
   videos.all = [];
   videos.newList; 
   videos.minutes = 05;
+  videos.cat = 'random';
+
   
 
-  videos.fetch = function(cb, num) {
-    $('#loader').toggle();
-    var category = $("#cat input[type='radio']:checked").val();
+  videos.fetch = function(cb) {
+    // $('form').toggle();
+    $('#loader-visibility').toggle();
+
+    $('html,body').animate({
+        scrollTop: $("#finish").offset().top},
+        'slow');
+
+    var category;
+
+    if(videos.cat === 'random') {
+      category = '/channels/staffpicks/videos';
+    } else {
+      category = '/categories/' + videos.cat + '/videos';
+    }  
+
+    videos.time = videos.minutes * 60
+ 
     $http 
-    .post('/category?cat='+category)
+    .post('/category?cat='+ category)
     .then(function(response) {
       videos.all = response.data
-        cb(num);
+        cb(videos.time);
       }) 
-  }
+  };
 
-  var playlist = function(num) {
-    $('#loader').toggle();
+  videos.playlist = function(num) {
+
+    $('#loader-visibility').toggle();
+
     var selection = videos.all;
     var withinTimeFrame = [];
 
@@ -46,7 +65,7 @@ function CategoryController($http) {
         count += withinTimeFrame[i].duration;
       }
     }
-    console.log("new list" + videos.newList);
+
   };
 
   videos.add = function() {
@@ -78,14 +97,8 @@ function CategoryController($http) {
     }
   };
 
-  $('#submit').on('click', function() {
-    // $('.container.selector').toggle();
-    var time = videos.minutes * 60;
-    console.log(time);
-    videos.fetch(playlist, time);
-    // $('#playlist').toggle();
 
-  });
-  
+    
+
 }
 

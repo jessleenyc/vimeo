@@ -29,7 +29,7 @@ app.post('/category', function(req, res) {
     lib.request({
     path: req.query.cat,
     query: {
-        page: (Math.random() * 4) + 1,
+        page: Math.floor(Math.random() * 5) + 1,
         per_page: 50,
         sort: 'plays',
     }

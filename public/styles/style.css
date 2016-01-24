@@ -1,6 +1,3 @@
-body {
-  padding: 10px;
-}
 header {
   display: block;
   margin: 0 auto;
@@ -16,16 +13,12 @@ iframe {
   max-width: 960px;
 }
 
-.playlist {
-  display: visible;
-}
-
 input[type=radio] {
    position: absolute;
    left: -9999px;
 }
 
-#loader {
+#loader-visibility {
   display: none;
 }
 
@@ -57,6 +50,72 @@ label {
 }
 
 
+p {
+  color: white;
+}
+
+.fa-2x {
+  color: white;
+}
+
+button#submit {
+  height: 10px;
+  border: 1px solid #1AB7EA;
+  line-height: 2px;
+  opacity: 1;
+}
+
+button#submit:hover {
+  background-color: #1AB7EA;
+  color: white;
+  opacity: .7;
+}
 
 
+#one {
+  background-image: url('/images/Music.png');
+}
+
+#two {
+  background-image: url('/images/Doc.png');
+}
+
+#three {
+  background-image: url('/images/Anime.png');
+}
+
+#four {
+  background-image: url('/images/Experiment.png');
+}
+
+#five {
+  background-image: url('/images/Random.png');
+}
+
+
+#six {
+  background-image: url('/images/Narrative.png');
+}
+
+#seven {
+  background-image: url('/images/Travel.png');
+}
+
+#eight {
+  background-image: url('/images/Comedy.png');
+}
+
+#nine {
+  background-image: url('/images/Sports.png');
+}
+
+#playlist {
+  background-color: black;
+  text-align: center;
+}
+
+#load-text {
+  color: #1ab7ea;
+  text-align: center;
+}
 
