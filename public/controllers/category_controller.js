@@ -18,10 +18,10 @@ function CategoryController($http) {
     //shows loading animation
     $('#loader-visibility').toggle();
 
-    //scrolls to loading animation
-    $('html,body').animate({
-        scrollTop: $("#finish").offset().top},
-        'slow');
+    // scrolls to loading animation
+    // $('html,body').animate({
+    //     scrollTop: $("#finish").offset().top()},
+    //     'slow');
 
     //create params to send to server
     //category params

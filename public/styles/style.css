@@ -41,7 +41,7 @@ h5 {
   color: #1ab7ea;
 }
 
-input[type=text] {
+#min-input {
   width: 50px;
   margin: 0px ;
   text-align: center;
