@@ -20,73 +20,70 @@
   <h3> Curated videos for busy people, like you.</h3>
 </header>
 
- <div class="container" ng-controller="CategoryController as videos">
-  <div class="selector">   
+  <div class="container" ng-controller="CategoryController as videos">
     <form id="cat">
-    <div class="row">
+      <div class="selector row">   
+      
+        <div class="six columns">
+          <div class="row">
+          <h5> PICK A CATEGORY </h5>
+            <label id="lady-one" class="button" for="music"><i class="fa fa-2x fa-headphones"></i><p>music</p></label>
+            <input id="music" type="radio" name="category" value="/categories/music/videos">
+
+            <label id="lady-two" class="button" for="documentary"><i class="fa fa-video-camera fa-2x"></i><p>documentary</p></label>
+            <input id="documentary"type="radio" name="category" value="/categories/documentary/videos">
+
+            <label id="lady-three" class="button"for="animation"><i class="fa fa-magic fa-2x"></i><p>animation</p></label>
+            <input id="animation" type="radio" name="category" value="/categories/animation/videos">
+          </div> <!-- .row -->
+       
+          <div class="row">
+            <label id="lady-four" class="button" for="experimental"><i class="fa fa-gears fa-2x"></i><p>experimental</p></label>
+            <input id="experimental" type="radio" name="category" value="/categories/experimental/videos">
+
+            <label id="lady-five" class="button" for="random"><i class="fa fa-trophy fa-2x"></i><p>Random</p></label>
+            <input id="random" type="radio" name="category" value="/channels/staffpicks/videos">
+
+            <label id="lady-six" class="button" for="narrative"><i class="fa fa-map-o fa-2x"></i><p>narrative</p></label>
+            <input id="narrative" type="radio" name="category" value="/categories/narrative/videos">
+          </div> <!-- .row -->
+
+          <div class="row">
+            <label id="lady-seven" class="button" for="travel"><i class="fa fa-plane fa-2x"></i><p>travel</p></label>
+            <input id="travel" type="radio" name="category" value="/categories/travel/videos">
+
+            <label id="lady-eight" class="button" for="comedy"><i class="fa fa-smile-o fa-2x"></i><p>comedy</p></label>
+            <input id="comedy" type="radio" name="category" value="/categories/comedy/videos">
+
+            <label id="lady-nine" class="button" for="sports"><i class="fa fa-futbol-o fa-2x"></i><p>sports</p></label>
+            <input id="sports" type="radio" name="category" value="/categories/sports/videos">
+          </div> <!-- .row -->
+        </div>
+               
+        <div class="six columns">
+          <div class="row">
+            <h5> HOW MUCH TIME CAN YOU SPARE? <br><br>
+              <i ng-click="videos.add()" id="plus" class="fa fa-plus-circle"></i><br>
+              <input ng-model="videos.minutes" type="text" readonly><br>
+              <i ng-click="videos.minus()" id="minus"class="fa fa-minus-circle"></i><br> 
+            <h6> You'd like to watch {{videos.minutes}} minutes of </h6>  
+            <button id="submit">submit</button>
+            </h5>
+          </div>
+        </div>
+      </div> <!-- .selector -->
+
       <div class="row">
-        <div class="six columns">
-        <h5> PICK A CATEGORY </h5>
-          <label id="lady-one" class="button" for="music"><i class="fa fa-2x fa-headphones"></i><p>music</p></label>
-          <input id="music" type="radio" name="category" value="/categories/music/videos">
+        <div id="loader" class="loader">
+        </div> <!-- .loader -->
 
-          <label id="lady-two" class="button" for="documentary"><i class="fa fa-video-camera fa-2x"></i><p>documentary</p></label>
-          <input id="documentary"type="radio" name="category" value="/categories/documentary/videos">
-
-          <label id="lady-three" class="button"for="animation"><i class="fa fa-magic fa-2x"></i><p>animation</p></label>
-          <input id="animation" type="radio" name="category" value="/categories/animation/videos">
-        </div>
-        <div class="six columns">
-          <h5> HOW MUCH TIME CAN YOU SPARE?</h5>
-  <!--         <input id="time" type="text">  
-          <button id="submit">submit</button> -->
-          <h5>
-            <i ng-click="videos.time()" id="plus" class="fa fa-plus-circle"></i><br>
-            <input ng-model="videos.minutes" type="text" readonly><br>
-            <i ng-click="videos.minus()" id="minus"class="fa fa-minus-circle"></i>
-          </h5>
-
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="six columns">
-          <label id="lady-four" class="button" for="experimental"><i class="fa fa-gears fa-2x"></i><p>experimental</p></label>
-          <input id="experimental" type="radio" name="category" value="/categories/experimental/videos">
-
-          <label id="lady-five" class="button" for="random"><i class="fa fa-trophy fa-2x"></i><p>Random</p></label>
-          <input id="random" type="radio" name="category" value="/channels/staffpicks/videos">
-
-          <label id="lady-six" class="button" for="narrative"><i class="fa fa-map-o fa-2x"></i><p>narrative</p></label>
-          <input id="narrative" type="radio" name="category" value="/categories/narrative/videos">
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="six columns">
-          <label id="lady-seven" class="button" for="travel"><i class="fa fa-plane fa-2x"></i><p>travel</p></label>
-          <input id="travel" type="radio" name="category" value="/categories/travel/videos">
-
-          <label id="lady-eight" class="button" for="comedy"><i class="fa fa-smile-o fa-2x"></i><p>comedy</p></label>
-          <input id="comedy" type="radio" name="category" value="/categories/comedy/videos">
-
-          <label id="lady-nine" class="button" for="sports"><i class="fa fa-futbol-o fa-2x"></i><p>sports</p></label>
-          <input id="sports" type="radio" name="category" value="/categories/sports/videos">
-        </div>
-      </div>
+        <div id="playlist" ng-repeat="video in videos.newList"> 
+          {{video.name}}
+          <div class="player" ng-bind-html="video.embed.html"></div>
+        </div> <!-- #playlist -->
     </form>
-    </div>
-  </div> <!-- .selector -->
+  </div> <!-- .container -->
 
-  <div id="loader" class="loader">
-  </div>
-
-    <div id="playlist" ng-repeat="video in videos.newList"> 
-      {{video.name}}
-      <div class="player" ng-bind-html="video.embed.html"></div>
-    </div> <!-- #playlist -->
-
-</div> <!-- .container -->
 
 </body>
 </html>

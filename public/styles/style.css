@@ -13,11 +13,11 @@ img {
 }
 
 iframe {
-  max-width: 1080px;
+  max-width: 960px;
 }
 
 .playlist {
-  display: none;
+  display: visible;
 }
 
 input[type=radio] {
@@ -49,53 +49,12 @@ h5 {
 input[type=text] {
   width: 50px;
   margin: 0px ;
-  text-align: right;
+  text-align: center;
 }
 
 label {
   background-size: contain;
 }
-
-#lady-one {
-  background-image: url('/images/Lady_Sq_1.png');
-}
-
-#lady-two{
-  background-image: url('/images/Lady_Sq_2.png');
-}
-
-#lady-three{
-  background-image: url('/images/Lady_Sq_3.png');
-}
-
-#lady-four{
-  background-image: url('/images/Lady_Sq_4.png');
-}
-
-#lady-five{
-  background-image: url('/images/Lady_Sq_5.png');
-}
-
-#lady-six{
-  background-image: url('/images/Lady_Sq_6.png');
-}
-
-#lady-seven{
-  background-image: url('/images/Lady_Sq_7.png');
-}
-
-#lady-eight{
-  background-image: url('/images/Lady_Sq_8.png');
-}
-
-#lady-nine{
-  background-image: url('/images/Lady_Sq_9.png');
-}
-
-#lady-five{
-  background-image: url('/images/Lady_Sq_5.png');
-}
-
 
 
 

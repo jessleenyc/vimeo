@@ -8,19 +8,15 @@ function CategoryController($http) {
   videos.all = [];
   videos.newList; 
   videos.minutes = 05;
+  
 
   videos.fetch = function(cb, num) {
-    // display loader
     $('#loader').toggle();
     var category = $("#cat input[type='radio']:checked").val();
-
-
     $http 
     .post('/category?cat='+category)
-
     .then(function(response) {
       videos.all = response.data
-        //remove loader
         cb(num);
       }) 
   }
@@ -50,9 +46,10 @@ function CategoryController($http) {
         count += withinTimeFrame[i].duration;
       }
     }
-  }
+    console.log("new list" + videos.newList);
+  };
 
-  videos.time = function() {
+  videos.add = function() {
 
     if(videos.minutes <= 15) {
       videos.minutes += 5;
@@ -65,16 +62,28 @@ function CategoryController($http) {
     } else {
       $('.max-time').toggle();
     }
+  };
 
-    console.log(videos.minutes);
-  }
+  videos.minus = function() {
+    if(videos.minutes === 5) {
+      $('.min-time').toggle();
+    } else if (videos.minutes === 90) {
+      videos.minutes -= 30;
+    } else if (videos.minutes === 60 || videos.minutes === 45) {
+      videos.minutes -= 15;
+    } else if (videos.minutes === 30) {
+      videos.minutes -= 10;
+    } else {
+      videos.minutes -= 5;
+    }
+  };
 
   $('#submit').on('click', function() {
     // $('.container.selector').toggle();
-    var time = $('#time').val()
+    var time = videos.minutes * 60;
     console.log(time);
     videos.fetch(playlist, time);
-    $('#playlist').toggle();
+    // $('#playlist').toggle();
 
   });
   
