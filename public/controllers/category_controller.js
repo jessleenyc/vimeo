@@ -7,10 +7,10 @@ function CategoryController($http) {
   var videos = this;
   videos.all = [];
   videos.newList; 
-  
+  videos.minutes = 05;
 
   videos.fetch = function(cb, num) {
-    // display lader
+    // display loader
     $('#loader').toggle();
     var category = $("#cat input[type='radio']:checked").val();
 
@@ -51,8 +51,28 @@ function CategoryController($http) {
       }
     }
   }
+
+  videos.time = function() {
+
+    if(videos.minutes <= 15) {
+      videos.minutes += 5;
+    } else if(videos.minutes === 20) {
+      videos.minutes += 10;
+    } else if(videos.minutes === 30 || videos.minutes === 45) {
+      videos.minutes += 15;
+    } else if(videos.minutes === 60) {
+      videos.minutes += 30;
+    } else {
+      $('.max-time').toggle();
+    }
+
+    console.log(videos.minutes);
+  }
+
   $('#submit').on('click', function() {
+    // $('.container.selector').toggle();
     var time = $('#time').val()
+    console.log(time);
     videos.fetch(playlist, time);
     $('#playlist').toggle();
 

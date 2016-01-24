@@ -22,7 +22,6 @@ iframe {
 
 input[type=radio] {
    position: absolute;
-   top: -9999px;
    left: -9999px;
 }
 
@@ -38,4 +37,67 @@ h5 {
   text-align: center;
   padding-top: 10px;
 }
+
+.selector {
+  display: visible; 
+}
+
+.fa-plus-circle, .fa-minus-circle {
+  color: #1ab7ea;
+}
+
+input[type=text] {
+  width: 50px;
+  margin: 0px ;
+  text-align: right;
+}
+
+label {
+  background-size: contain;
+}
+
+#lady-one {
+  background-image: url('/images/Lady_Sq_1.png');
+}
+
+#lady-two{
+  background-image: url('/images/Lady_Sq_2.png');
+}
+
+#lady-three{
+  background-image: url('/images/Lady_Sq_3.png');
+}
+
+#lady-four{
+  background-image: url('/images/Lady_Sq_4.png');
+}
+
+#lady-five{
+  background-image: url('/images/Lady_Sq_5.png');
+}
+
+#lady-six{
+  background-image: url('/images/Lady_Sq_6.png');
+}
+
+#lady-seven{
+  background-image: url('/images/Lady_Sq_7.png');
+}
+
+#lady-eight{
+  background-image: url('/images/Lady_Sq_8.png');
+}
+
+#lady-nine{
+  background-image: url('/images/Lady_Sq_9.png');
+}
+
+#lady-five{
+  background-image: url('/images/Lady_Sq_5.png');
+}
+
+
+
+
+
 
