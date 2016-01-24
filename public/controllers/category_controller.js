@@ -6,20 +6,25 @@ function CategoryController($http) {
 
   var videos = this;
   videos.all = [];
-  videos.newList; 
+  videos.playList; 
+
+  //set default minutes to five 
   videos.minutes = 05;
+
+  //set default category to random 
   videos.cat = 'random';
 
-  
-
   videos.fetch = function(cb) {
-    // $('form').toggle();
+    //shows loading animation
     $('#loader-visibility').toggle();
 
+    //scrolls to loading animation
     $('html,body').animate({
         scrollTop: $("#finish").offset().top},
         'slow');
 
+    //create params to send to server
+    //category params
     var category;
 
     if(videos.cat === 'random') {
@@ -28,10 +33,17 @@ function CategoryController($http) {
       category = '/categories/' + videos.cat + '/videos';
     }  
 
+    //convert time to seconds 
     videos.time = videos.minutes * 60
- 
+
+    //selecting a random page (between 1-15) that will return 50 videos
+    var page = Math.floor(Math.random() * 15) + 1
+    console.log(page);
+    
+    //sending a post request w/ params for the api call 
+
     $http 
-    .post('/category?cat='+ category)
+    .post('/category?cat='+ category +'&page=' + page) 
     .then(function(response) {
       videos.all = response.data
         cb(videos.time);
@@ -39,13 +51,13 @@ function CategoryController($http) {
   };
 
   videos.playlist = function(num) {
-
+    // remove loading animation 
     $('#loader-visibility').toggle();
 
     var selection = videos.all;
     var withinTimeFrame = [];
 
-    //creates withinTimeFrame array of all videos within the amount of time provided 
+    //creates an array of all videos that do not exceed the time requirement, have embed links, and are public
     selection.forEach(function(vid) {
       if (vid.duration < num && vid.embed.html && vid.privacy.view == "anybody") {
         withinTimeFrame.push(vid);
@@ -53,21 +65,23 @@ function CategoryController($http) {
     });
 
     var random = withinTimeFrame[Math.floor(Math.random() * withinTimeFrame.length)];
-    //first video for selection
-    videos.newList = [random];
-    
+
+    //picks one random video to the playlist
+    videos.playList = [random];
+
+    //adds as many videos to the playList as possible before we hit the max time
     var count = 0;
 
     for(var i = 1; i < withinTimeFrame.length; i++) {
 
       if(count + withinTimeFrame[i].duration < num - random.duration && withinTimeFrame[i].name !== random.name) {
-        videos.newList.push(withinTimeFrame[i]);
+        videos.playList.push(withinTimeFrame[i]);
         count += withinTimeFrame[i].duration;
       }
     }
-
   };
 
+  //limits amount of time chosen 
   videos.add = function() {
 
     if(videos.minutes <= 15) {
@@ -96,9 +110,5 @@ function CategoryController($http) {
       videos.minutes -= 5;
     }
   };
-
-
-    
-
 }
 

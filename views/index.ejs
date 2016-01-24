@@ -58,7 +58,7 @@
               <label id="nine" class="button" for="sports"><i class="fa fa-futbol-o fa-2x"></i><p>sports</p></label>
               <input ng-model="videos.cat"id="sports" type="radio" name="category" value="sports">
             </div> <!-- .row -->
-          </div>
+          </div> <!-- .six columns -->
                  
           <div class="six columns">
             <div class="row">
@@ -71,23 +71,33 @@
               <h5> We're going to find {{videos.minutes}} minutes worth of {{videos.cat}} videos for you. </h5>  
               <button ng-click="videos.fetch(videos.playlist, videos.time)"id="submit">YES, PLEASE!</button>
               </h5>
-            </div>
-          </div>
+            </div> <!-- .row -->
+          </div> <!-- .six columns -->
         </div> <!-- .selector -->
       </form>
     </div> <!-- .container -->
 
-    <div id="finish">
+    <div id="load-container">
       <div id="loader-visibility">
         <h5 id="load-text">~ LOADING VIDEOS ~</h5>
         <div id="loader" class="loader"></div>
       </div>
 
-      <div id="playlist" ng-repeat="video in videos.newList"> 
+      <div id="playlist" ng-repeat="video in videos.playList"> 
         <div class="player" ng-bind-html="video.embed.html"></div>
       </div> <!-- #playlist -->
     </div> <!-- CategoryController -->
-  </div> <!-- .finish -->
+  </div> <!-- #load-container -->
+
+  <div id="register-container" class="container">
+    <h3> CREATE AN ACCOUNT </h3>
+    <ul> 
+      <li> saved history of videos you've watched </li>
+      <li> guarantee no-repeats! </li>
+    </ul>
+
+    
+  </div>
 
 </body>
 </html>

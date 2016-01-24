@@ -3,6 +3,8 @@ header {
   margin: 0 auto;
   text-align: center;
   border-bottom: black dotted 1px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 img {
@@ -119,3 +121,6 @@ button#submit:hover {
   text-align: center;
 }
 
+#register-container {
+  text-align: center;
+}

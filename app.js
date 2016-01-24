@@ -24,12 +24,13 @@ app.get('/', function(req, res) {
 });
 
 app.post('/category', function(req, res) {
-  console.log(req.query.cat);
+  console.log('cate' + req.query.cat);
+  console.log('page' + req.query.page);
   var call = function(){
     lib.request({
     path: req.query.cat,
     query: {
-        page: Math.floor(Math.random() * 5) + 1,
+        page: req.query.page,
         per_page: 50,
         sort: 'plays',
     }
@@ -38,7 +39,6 @@ app.post('/category', function(req, res) {
         console.log('error' + error);
       } else {
         res.json(body.data);
-        console.log(body.data);
       }
   })
 }
