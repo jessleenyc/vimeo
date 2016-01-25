@@ -18,4 +18,9 @@ function PlaylistController($http) {
       }
       console.log(playlist.consolidate);
     })
+
+  playlist.show = function() {
+
+  }
+
 }

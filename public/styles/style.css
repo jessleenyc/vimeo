@@ -135,3 +135,7 @@ button#submit:hover {
 #border {
   border-top: 1px dotted black;
 }
+
+#historical-videos {
+  display:none;
+}
