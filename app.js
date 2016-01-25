@@ -71,11 +71,15 @@ var lib = new Vimeo(process.env.VIMEO_IDENTIFIER, process.env.VIMEO_SECRET, proc
 
 //routes
 app.get('/', function(req, res) {
-
   console.log('log session email ' + req.session.email);
   db.collection('users').find({}).toArray(function(err, users) {
-    var email = req.session.email || false;
+    if(err){
+      console.log(err);
+      res.render('index')
+    } else {
+    var email = req.session.email;
     res.render('index', {users: users, email: email});
+    }
   });
 });
 

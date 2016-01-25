@@ -1,6 +1,5 @@
 angular.module('VimeoApp').controller('LoginController', LoginController);
 
-
 LoginController.$inject = ['$http'];
 
 function LoginController($http) {
@@ -16,9 +15,8 @@ function LoginController($http) {
     $http
       .post('/login', user)
       .then(function(response) {
-        console.log('logged in?');
+        $('register-container').toggle();
       })
-
   }
 
   login.end = function() {
@@ -26,6 +24,7 @@ function LoginController($http) {
       .get('/logout')
       .then(function(response) {
         console.log('logged out?')
+        $('#logout').toggle();
       })
   }
 }

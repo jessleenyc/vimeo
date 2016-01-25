@@ -22,7 +22,4 @@ function RegisterController($http) {
         //show login or automatic login?
       })
   }
-
-
-
 };

@@ -107,7 +107,7 @@
       <label> Password </label>
       <input type="password" name="userPassword" ng-model="register.password" required minLength="8">
 
-      <button ng-click="register.account()"> Register</button>
+      <button id="register" ng-click="register.account()"> Register</button>
     </form>
   </div> <!-- RegisterController -->
 
@@ -119,8 +119,8 @@
     <label>Password</label>
     <input type="password" name="loginPassword" ng-model="login.password" required>
 
-    <button ng-click="login.session()">Login</button>
-    <button ng-click="login.end()">log out </button>
+    <button id="login" ng-click="login.session()">Login</button>
+    <button id="logout" ng-click="login.end()">log out </button>
   </form>
   </div>
 
