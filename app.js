@@ -36,8 +36,6 @@ app.use(function(req, res, next) {
   next();
 })
 
-
-
 app.use(session({
   secret: 'waffles',
   store: new MongoStore({ url: mongoUrl })
@@ -142,7 +140,7 @@ app.get('/logout', function(req, res) {
 app.post('/playlist', function(req, res) {
   //saves playlist to user 
   if (req.session) {
-    db.collection('users').update({email: req.session.email}, {$set: {playlist: req.body.playlist}})
+    db.collection('users').update({email: req.session.email}, {$push: {playlist: req.body.playlist}})
   }
 })
 
