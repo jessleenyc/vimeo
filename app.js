@@ -126,7 +126,6 @@ app.post('/login', function(req, res) {
       req.session.email = user.email;
       req.session.userId = user._id;
     }
-    res.redirect('/');
   });
 });
 
@@ -134,7 +133,7 @@ app.get('/logout', function(req, res) {
   console.log('logged out server?')
   req.session.email = null;
   req.session.userId = null;
-  res.redirect('/');
+  res.redirect('index');
 })
 
 app.post('/playlist', function(req, res) {
@@ -154,6 +153,7 @@ app.get('/playlist', function(req, res) {
 })
 
 app.get('/users/:id', function(req, res) {
+  var id = req.params.id 
   res.render('show'); 
 })
 
