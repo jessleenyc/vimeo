@@ -21,8 +21,7 @@ app.set('view engine', 'ejs');
 var db;
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectId;
-// var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/vimeo';
-var mongoUrl = 'mongodb://localhost:27017/vimeo';
+var mongoUrl = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/vimeo';
 MongoClient.connect(mongoUrl, function(err, database) {
   if (err) { throw err; }
   db = database;
