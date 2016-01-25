@@ -60,9 +60,6 @@ var authenticateUser = function(email, password, callback) {
   });
 };
 
-
-
-
 //Vimeo API 
 require('dotenv').load();
 
@@ -72,15 +69,13 @@ var lib = new Vimeo(process.env.VIMEO_IDENTIFIER, process.env.VIMEO_SECRET, proc
 //routes
 app.get('/', function(req, res) {
   console.log('log session email ' + req.session.email);
+
   db.collection('users').find({}).toArray(function(err, users) {
-    if(err){
-      console.log(err);
-      res.render('index')
-    } else {
-    var email = req.session.email;
+    var email = req.session.email || false;
+    console.log('email', email);
     res.render('index', {users: users, email: email});
-    }
   });
+
 });
 
 app.post('/category', function(req, res) {
@@ -97,9 +92,8 @@ app.post('/category', function(req, res) {
   },function(error, body, status_code, headers) {
       if (error) {
         console.log('error' + error);
-      } else {
-        res.json(body.data);
       }
+        res.json(body.data);
     })
   }
   call();
@@ -140,9 +134,30 @@ app.post('/login', function(req, res) {
 });
 
 app.get('/logout', function(req, res) {
+  console.log('logged out server?')
   req.session.email = null;
   req.session.userId = null;
   res.redirect('/');
+})
+
+app.post('/playlist', function(req, res) {
+  //saves playlist to user 
+  if (req.session) {
+    db.collection('users').update({email: req.session.email}, {$set: {playlist: req.body.playlist}})
+  }
+})
+
+//grabs user playlist
+app.get('/playlist', function(req, res) {
+  if (req.session) {
+    db.collection('users').findOne({email: req.session.email}, function(err, userPlaylist) {
+      res.json(userPlaylist);
+    })
+  }
+})
+
+app.get('/users/:id', function(req, res) {
+  res.render('show'); 
 })
 
 app.listen(process.env.PORT || 3000);

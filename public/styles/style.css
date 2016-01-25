@@ -124,7 +124,7 @@ button#submit:hover {
 #register-container {
   text-align: center;
 }
-
+/*
 #logout {
-  display:none;
-}
+  display:hidden;
+}*/

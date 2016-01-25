@@ -90,6 +90,7 @@
     </div> <!-- CategoryController -->
   </div> <!-- #load-container -->
 
+  <% if(!email) { %>
   <div ng-controller="RegisterController as register" id="register-container" class="container">
     <h3> CREATE AN ACCOUNT </h3>
     <ul> 
@@ -112,17 +113,27 @@
   </div> <!-- RegisterController -->
 
   <div ng-controller="LoginController as login">
-  <form name="loginForm" class="login-form" validate>
-    <label>Email</label>
-    <input type="email" name="loginEmail" ng-model="login.email" required>
+    <form name="loginForm" id="login-form" validate>
+      <label>Email</label>
+      <input type="email" name="loginEmail" ng-model="login.email" required>
 
-    <label>Password</label>
-    <input type="password" name="loginPassword" ng-model="login.password" required>
+      <label>Password</label>
+      <input type="password" name="loginPassword" ng-model="login.password" required>
+      <button id="login" ng-click="login.session()">Login</button>
+    </form>
+  </div> <!-- LoginController -->
+  <% } %>
 
-    <button id="login" ng-click="login.session()">Login</button>
+  <% if(email) {%>
+  <div ng-controller="LoginController as login">
+
     <button id="logout" ng-click="login.end()">log out </button>
-  </form>
-  </div>
+
+  </div> <!-- LoginController -->
+  <% } %>
+
+
+
 
 </body>
 </html>

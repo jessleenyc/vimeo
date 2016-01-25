@@ -79,9 +79,13 @@ function CategoryController($http) {
         count += withinTimeFrame[i].duration;
       }
     }
+
+    $http
+      .post('/playlist', {playlist: videos.playList})
+
   };
 
-  //limits amount of time chosen 
+  //creates specific amounts of time
   videos.add = function() {
 
     if(videos.minutes <= 15) {

@@ -18,7 +18,7 @@ function RegisterController($http) {
       .post('/register', user)
       .then(function(response) {
         console.log(response);
-        //toggle thank you for register
+        //toggle thank you for registering
         //show login or automatic login?
       })
   }
