@@ -120,20 +120,28 @@ app.post('/register', function(req, res) {
 app.post('/login', function(req, res) {
     // req.session.name = req.body.username;
 
-  authenticateUser(req.body.email, req.body.password, function(user) {
+    console.log('login req body', req.body);
+  authenticateUser(req.body.loginEmail, req.body.loginPassword, function(user) {
     console.log('loggin user' + user._id);
     if (user) {
       req.session.email = user.email;
       req.session.userId = user._id;
+      res.redirect('/');
     }
   });
 });
 
-app.get('/logout', function(req, res) {
+app.get('/login', function(req, res) {
+  console.log('login page', req.session.email);
+  res.render('login');
+})
+
+
+app.post('/logout', function(req, res) {
   console.log('logged out server?')
   req.session.email = null;
   req.session.userId = null;
-  res.redirect('index');
+  res.redirect('/');
 })
 
 app.post('/playlist', function(req, res) {

@@ -1,0 +1,28 @@
+<!DOCTYPE htm>
+<html ng-app="VimeoApp">
+<head>
+  <title>Vimeo Responsibly</title>
+  <link rel="stylesheet" href="/styles/reset.css">
+  <link rel="stylesheet" href="/styles/normalize.css">
+  <link rel="stylesheet" href="/styles/skeleton.css">
+  <link rel="stylesheet" href="/styles/loader.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/styles/style.css">
+  <script src="/jquery/dist/jquery.js"></script>
+  <script src="/angular/angular.js"></script>
+  <script src="/controllers/angular_app.js"></script>
+  <script src="/controllers/category_controller.js"></script>
+  <script src="/controllers/login_controller.js"></script>
+</head>
+<body>
+
+  <form name="loginForm" id="login-form" validate method="post" action="/login">
+    <label>Email</label>
+    <input type="email" name="loginEmail" required>
+    <label>Password</label>
+    <input type="password" name="loginPassword" required>
+    <button id="login" type="submit">Login</button>
+  </form>
+
+</body>
+</html>

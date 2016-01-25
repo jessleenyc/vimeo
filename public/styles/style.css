@@ -5,6 +5,7 @@ header {
   border-bottom: black dotted 1px;
   padding-left: 10px;
   padding-right: 10px;
+  padding-bottom: 5px;  
 }
 
 img {
@@ -60,7 +61,7 @@ p {
   color: white;
 }
 
-button#submit, button#login, button#register, button#logout {
+button#submit, button#login-form, button#register, button#logout, a#login{
   height: 10px;
   border: 1px solid #1AB7EA;
   line-height: 2px;
@@ -124,7 +125,13 @@ button#submit:hover {
 #register-container {
   text-align: center;
 }
-/*
-#logout {
-  display:hidden;
-}*/
+
+#history {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 10px;
+}
+
+#border {
+  border-top: 1px dotted black;
+}
