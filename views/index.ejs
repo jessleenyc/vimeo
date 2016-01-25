@@ -13,13 +13,24 @@
   <script src="/controllers/angular_app.js"></script>
   <script src="/controllers/category_controller.js"></script>
   <script src="/controllers/register_controller.js"></script>
-  <script src="/controllers/login_controller.js"></script>
+  <script src="/controllers/playlist_controller.js"></script>
+<!--   // <script src="/controllers/login_controller.js"></script> -->
 </head>
 <body>
 
 <header>
   <img src="/images/VO.png">
   <h3> Curated videos for busy people, like you.</h3>
+    <% if(email) {%>
+
+    <form action="/logout" method="post">
+      <button id="logout" type="submit">log out</button>
+    </form>
+    <% } %>
+
+    <% if(!email) {%>
+      <a class="button" id="login" href="/login">Login</a>
+    <% } %>
 </header>
   <div ng-controller="CategoryController as videos">
     <div class="container">
@@ -107,33 +118,24 @@
 
       <label> Password </label>
       <input type="password" name="userPassword" ng-model="register.password" required minLength="8">
-
+      <br>
       <button id="register" ng-click="register.account()"> Register</button>
     </form>
   </div> <!-- RegisterController -->
-
-  <div ng-controller="LoginController as login">
-    <form name="loginForm" id="login-form" validate>
-      <label>Email</label>
-      <input type="email" name="loginEmail" ng-model="login.email" required>
-
-      <label>Password</label>
-      <input type="password" name="loginPassword" ng-model="login.password" required>
-      <button id="login" ng-click="login.session()">Login</button>
-    </form>
-  </div> <!-- LoginController -->
   <% } %>
 
-  <% if(email) {%>
-  <div ng-controller="LoginController as login">
-
-    <button id="logout" ng-click="login.end()">log out </button>
-
-  </div> <!-- LoginController -->
+  <% if(email) { %>
+  <div id="border"></div>
+  <div ng-controller="PlaylistController as playlist" class="container" id="history">
+    <h4> PAST VIDEOS WE'VE SENT YOU </h4>
+      <div ng-repeat="video in playlist.consolidate">
+        <a href="{{video.link}}">{{video.name}}</a>
+      </div>
+    </div>
+  </body>
   <% } %>
-
-
-
-
 </body>
 </html>
+
+
+
