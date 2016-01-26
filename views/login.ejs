@@ -12,17 +12,22 @@
   <script src="/angular/angular.js"></script>
   <script src="/controllers/angular_app.js"></script>
   <script src="/controllers/category_controller.js"></script>
-  <script src="/controllers/login_controller.js"></script>
 </head>
 <body>
-
-  <form name="loginForm" id="login-form" validate method="post" action="/login">
-    <label>Email</label>
-    <input type="email" name="loginEmail" required>
-    <label>Password</label>
-    <input type="password" name="loginPassword" required>
-    <button id="login" type="submit">Login</button>
-  </form>
-
+  <header>
+    <img src="/images/VO.png">
+    <h3> Curated videos for busy people, like you.</h3> 
+  </header>
+  <div class="container" id="login-container">
+    <form name="loginForm" id="login-form" validate method="post" action="/login">
+      <h4> Thanks for being cool. </h4>
+      <label>Email</label>
+      <input type="email" name="email" required>
+      <label>Password</label>
+      <input type="password" name="password" required>
+      <br>
+      <button id="login" type="submit">Login</button>
+    </form>
+  </div>
 </body>
 </html>

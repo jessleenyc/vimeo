@@ -113,19 +113,19 @@ app.post('/register', function(req, res) {
       console.log(err);
     } else {
       console.log('succesfullly registered user')
+      res.json(result); 
     }
   })
 })
 
 app.post('/login', function(req, res) {
-    // req.session.name = req.body.username;
 
-    console.log('login req body', req.body);
-  authenticateUser(req.body.loginEmail, req.body.loginPassword, function(user) {
+  authenticateUser(req.body.email, req.body.password, function(user) {
     console.log('loggin user' + user._id);
     if (user) {
       req.session.email = user.email;
       req.session.userId = user._id;
+      req.session.name = user.name;
       res.redirect('/');
     }
   });

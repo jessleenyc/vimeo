@@ -6,21 +6,24 @@ function PlaylistController($http) {
   var playlist = this;
   playlist.all = [];
   playlist.consolidate = [];
-  $http
+  
+  playlist.history = function() {
+    $http
     .get('/playlist')
     .then(function(response) {
+
       playlist.all = response.data.playlist;
 
-      for(var i = 0; i < playlist.all.length; i++) {
-        for (var j=0; j < playlist.all[i].length;  j++) {
-          playlist.consolidate.push(playlist.all[i][j])
+      if(playlist.all) {
+        for(var i = 0; i < playlist.all.length; i++) {
+          for (var j=0; j < playlist.all[i].length;  j++) {
+            playlist.consolidate.push(playlist.all[i][j])
+          }
         }
       }
-      console.log(playlist.consolidate);
     })
-
-  playlist.show = function() {
-
   }
-
+  playlist.history();
 }
+
+

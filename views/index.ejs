@@ -96,7 +96,9 @@
       </div>
 
       <div id="playlist" ng-repeat="video in videos.playList"> 
-        <div class="player" ng-bind-html="video.embed.html"></div>
+        <div class="video-container">
+          <div class="player" ng-bind-html="video.embed.html"></div>
+        </div> <!-- .video-container -->
       </div> <!-- #playlist -->
     </div> <!-- CategoryController -->
   </div> <!-- #load-container -->
@@ -119,7 +121,7 @@
       <label> Password </label>
       <input type="password" name="userPassword" ng-model="register.password" required minLength="8">
       <br>
-      <button id="register" ng-click="register.account()"> Register</button>
+      <button id="register" ng-click="register.account(register.login)">Register</button>
     </form>
   </div> <!-- RegisterController -->
   <% } %>
@@ -129,7 +131,7 @@
   <div ng-controller="PlaylistController as playlist" class="container" id="history">
     <h4> PAST VIDEOS WE'VE SENT YOU </h4>
       <div ng-repeat="video in playlist.consolidate">
-        <a href="{{video.link}}">{{video.name}}</a>
+        <a href="{{video.link}}">{{video.name}}</a>   
       </div>
     </div>
   </body>
