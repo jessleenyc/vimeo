@@ -78,7 +78,7 @@
                 <i ng-click="videos.add()" id="plus" class="fa fa-plus-circle"></i><br>
                 <input id="min-input" ng-model="videos.minutes" type="text" readonly><br>
                 <i ng-click="videos.minus()" id="minus"class="fa fa-minus-circle"></i><br> 
-              <h5> We're going to find {{videos.minutes}} minutes worth of {{videos.cat}} videos for you. </h5>  
+              <h5> We're going to find <strong style="background-color: yellow">{{videos.minutes}} minutes</strong> worth of <strong style="background-color: yellow">{{videos.cat}}</strong> videos for you. </h5>  
               <button ng-click="videos.fetch(videos.playlist, videos.time)"id="submit">YES, PLEASE!</button>
               </h5>
             </div> <!-- .row -->
