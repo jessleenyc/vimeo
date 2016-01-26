@@ -18,14 +18,13 @@ function RegisterController($http) {
       .post('/register', user)
       .then(function(response) {
         console.log('then!!')
-        //toggle thank you for registering
-        //show login or automatic login?
         cb(user)
       });
   }
 
   register.login = function(data, cb) {
     console.log('callback function', data);
+    //automatically logs user in
     $http
       .post('/login', data)
       .then(function(response) {

@@ -21,12 +21,9 @@ function PlaylistController($http) {
           }
         }
       }
-
     })
-  }
-
-  playlist.show = function() {
-    console.log('tet');
   }
   playlist.history();
 }
+
+
