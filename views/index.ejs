@@ -14,7 +14,6 @@
   <script src="/controllers/category_controller.js"></script>
   <script src="/controllers/register_controller.js"></script>
   <script src="/controllers/playlist_controller.js"></script>
-
 </head>
 <body>
 
@@ -22,10 +21,9 @@
   <img src="/images/VO.png">
   <h3> Curated videos for busy people, like you.</h3>
     <% if(email) {%>
-
-    <form action="/logout" method="post">
-      <button id="logout" type="submit">log out</button>
-    </form>
+      <form action="/logout" method="post">
+        <button id="logout" type="submit">log out</button>
+      </form>
     <% } %>
 
     <% if(!email) {%>
@@ -104,12 +102,8 @@
   </div> <!-- #load-container -->
 
   <% if(!email) { %>
-  <div ng-controller="RegisterController as register" id="register-container" class="container">
-    <h3> CREATE AN ACCOUNT </h3>
-    <ul> 
-      <li> saved history of videos you've watched </li>
-      <li> guarantee no-repeats! </li>
-    </ul>
+  <div data-ng-controller="RegisterController as register" id="register-container" class="container" data-ng-hide="register.isLoggedIn">
+    <h3> CREATE AN ACCOUNT TO SAVE YOUR RESULTS! </h3>
 
     <form name="registerForm" class="register-form" validate>
       <label> Name </label>
@@ -121,7 +115,7 @@
       <label> Password </label>
       <input type="password" name="userPassword" ng-model="register.password" required minLength="8">
       <br>
-      <button id="register" ng-click="register.account(register.login)">Register</button>
+      <button id="register" ng-click="register.account(register.login)">Create</button>
     </form>
   </div> <!-- RegisterController -->
   <% } %>
