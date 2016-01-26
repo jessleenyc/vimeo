@@ -45,7 +45,7 @@ app.use(session({
 var authenticateUser = function(email, password, callback) {
   db.collection('users').findOne({email: email}, function(err, data) {
     if (err) {throw err;}
-    bcrypt.compare(password, data.password, function(err, passwordsMatch) {
+    bcrypt.compare(password, data.                                               V                                                     G T, function(err, passwordsMatch) {
       if (passwordsMatch) { 
         console.log('match') 
         callback(data)     

@@ -10,9 +10,6 @@ function RegisterController($http) {
   console.log('WORKING ', $login.attr('href'));
 
 
-
-
-
   register.account = function(cb) {
     
     var user = {
