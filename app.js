@@ -144,6 +144,13 @@ app.post('/logout', function(req, res) {
   res.redirect('/');
 })
 
+app.get('/logout', function(req, res) {
+  console.log('logged out server?')
+  req.session.email = null;
+  req.session.userId = null;
+  res.redirect('/');
+})
+
 app.post('/playlist', function(req, res) {
   //saves playlist to user 
   if (req.session) {
