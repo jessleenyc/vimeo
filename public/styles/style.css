@@ -21,10 +21,6 @@ input[type=radio] {
    left: -9999px;
 }
 
-#loader-visibility {
-  display: none;
-}
-
 form {
   text-align: center;
 }
@@ -32,20 +28,6 @@ form {
 h5 {
   text-align: center;
   padding-top: 10px;
-}
-
-.selector {
-  display: visible; 
-}
-
-.fa-plus-circle, .fa-minus-circle {
-  color: #1ab7ea;
-}
-
-#min-input {
-  width: 50px;
-  margin: 0px ;
-  text-align: center;
 }
 
 label {
@@ -57,23 +39,61 @@ p {
   color: white;
 }
 
+.selector {
+  display: visible; 
+}
+
+.fa-plus-circle, .fa-minus-circle {
+  color: #1ab7ea;
+}
+
+.video-container {
+  position: relative;
+  overflow: hidden;
+}
+
 .fa-2x {
   color: white;
 }
 
-button#submit, button#login-form, button#register, button#logout, a#login{
-  height: 10px;
+#min-input {
+  width: 50px;
+  margin: 0px ;
+  text-align: center;
+}
+
+#loader-visibility {
+  display: none;
+}
+
+
+button#submit,
+button#login, 
+button#register, 
+button#logout, 
+a#login{
+  height: 5px;
   border: 1px solid #1AB7EA;
   line-height: 2px;
   opacity: 1;
+  padding: 20px;
+  width: 100px;
 }
 
+button#submit {
+  padding: 25px;
+  width: 150px;
+}
+
+button#login:hover, 
+button#register:hover, 
+button#logout:hover, 
+a#login:hover,
 button#submit:hover {
   background-color: #1AB7EA;
   color: white;
   opacity: .7;
 }
-
 
 #one {
   background-image: url('/images/Music.png');
@@ -94,7 +114,6 @@ button#submit:hover {
 #five {
   background-image: url('/images/Random.png');
 }
-
 
 #six {
   background-image: url('/images/Narrative.png');
@@ -126,6 +145,10 @@ button#submit:hover {
   text-align: center;
 }
 
+#login-container {
+  top: 5%;
+}
+
 #history {
   text-align: center;
   margin-bottom: 20px;
@@ -140,7 +163,3 @@ button#submit:hover {
   display:none;
 }
 
-.video-container {
-  position: relative;
-  overflow: hidden;
-}
