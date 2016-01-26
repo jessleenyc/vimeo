@@ -9,7 +9,7 @@ function ShowController ($http) {
     $http
       .get('/playlist')
       .then(function(response) {
-        console.log(response); 
+         
       })
   }
 
