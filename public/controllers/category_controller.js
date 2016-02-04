@@ -19,9 +19,9 @@ function CategoryController($http) {
     $('#loader-visibility').toggle();
 
     // scrolls to loading animation
-    // $('html,body').animate({
-    //     scrollTop: $("#finish").offset().top()},
-    //     'slow');
+    $('html, body').animate({
+        scrollTop: $("#cogwheel").offset().top},
+        500);
 
     //create params to send to server
     //category params

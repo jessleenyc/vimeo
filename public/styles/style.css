@@ -163,3 +163,10 @@ button#submit:hover {
   display:none;
 }
 
+.fa-circle-o-notch {
+  color: #1AB7EA;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+

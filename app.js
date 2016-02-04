@@ -15,8 +15,6 @@ app.use(express.static(__dirname + '/bower_components'));
 app.set('view engine', 'ejs');
 
 
-
-
 //db
 var db;
 var MongoClient = require('mongodb').MongoClient;

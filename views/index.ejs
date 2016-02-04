@@ -87,19 +87,23 @@
       </form>
     </div> <!-- .container -->
 
-    <div id="load-container">
-      <div id="loader-visibility">
-        <h5 id="load-text">~ LOADING VIDEOS ~</h5>
-        <div id="loader" class="loader"></div>
-      </div>
 
-      <div id="playlist" ng-repeat="video in videos.playList"> 
-        <div class="video-container">
-          <div class="player" ng-bind-html="video.embed.html"></div>
-        </div> <!-- .video-container -->
-      </div> <!-- #playlist -->
-    </div> <!-- CategoryController -->
-  </div> <!-- #load-container -->
+    <div id="loader-visibility">
+     <i class="fa fa-circle-o-notch fa-4x fa-spin" id="cogwheel"></i>
+      <h5 id="load-text">Fetching Videos...</h5>
+    </div> <!-- #loader-visibility -->
+
+    <div id="playlist" ng-repeat="video in videos.playList"> 
+      <div class="video-container">
+        <div class="player" ng-bind-html="video.embed.html"></div>
+      </div> <!-- .video-container -->
+    </div> <!-- #playlist -->
+  </div> <!-- CategoryController -->
+
+
+
+
+
 
   <% if(!email) { %>
   <div data-ng-controller="RegisterController as register" id="register-container" class="container" data-ng-hide="register.isLoggedIn">
